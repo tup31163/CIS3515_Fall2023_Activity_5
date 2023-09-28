@@ -15,10 +15,14 @@ class NumberDisplayAdapter (private val numbers: Array<Int>, private val callbac
 
 
     // TODO (Step 1b: Invoke lambda via onClickListener)
+
     inner class NumberViewHolder (layout: View) : RecyclerView.ViewHolder (layout) {
         // enumerate views inside layout
         val textView: TextView = layout.findViewById<TextView>(R.id.textView)
 
+        init {
+            textView.setOnClickListener { callback(numbers[adapterPosition]) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NumberViewHolder {
